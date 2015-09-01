@@ -3,6 +3,12 @@ package com.xpanxion;
 import java.util.Scanner;
 
 public class PersonalizedCalculator {
+	
+	public static final int ADDITION = 1;
+	public static final int SUBTRACTION = 2;
+	public static final int MULTIPLICATION = 3;	
+	public static final int DIVISION = 4;
+	
 	private static void promptForNumbers() {
 		System.out.println("");
 		System.out.print("Please enter numbers (separated by spaces); ");
@@ -27,7 +33,8 @@ public class PersonalizedCalculator {
 		System.out.println("What would you like to do?");
 		int operation = keyboard.nextInt();
 		
-		if (operation == 1) {
+		switch(operation) {
+		case ADDITION:
 			promptForNumbers();
 			int addend = keyboard.nextInt();
 			int augend = keyboard.nextInt();
@@ -36,30 +43,28 @@ public class PersonalizedCalculator {
 			
 			displayResultHeader();
 			System.out.println("  " + addend + " + " +  augend  + " = " + sum);
-		}
-		
-		else if (operation == 2) {
+			break;
+		case SUBTRACTION:
 			promptForNumbers();
 			int minuend = keyboard.nextInt();
 			int subtrahend = keyboard.nextInt();
 			
-			int sum = minuend - subtrahend;
+			int difference = minuend - subtrahend;
 			
 			displayResultHeader();
-			System.out.println("  " + minuend + " - " +  subtrahend  + " = " + sum);
-		}
-		
-		else if (operation == 3) {
+			System.out.println("  " + minuend + " - " +  subtrahend  + " = " + difference);
+			break;
+		case MULTIPLICATION:
 			promptForNumbers();
 			int multiplier = keyboard.nextInt();
 			int multiplicand = keyboard.nextInt();
 			
-			int sum = multiplier * multiplicand;
+			int product = multiplier * multiplicand;
 			
 			displayResultHeader();
-			System.out.println("  " + multiplier + " * " +  multiplicand  + " = " + sum);
-		}
-		else if (operation == 4) {
+			System.out.println("  " + multiplier + " * " +  multiplicand  + " = " + product);
+			break;
+		case DIVISION:
 			promptForNumbers();
 			int dividend = keyboard.nextInt();
 			int divisor = keyboard.nextInt();
@@ -68,17 +73,15 @@ public class PersonalizedCalculator {
 				System.out.println("I'm sorry, but you cannot divide by zero.");
 			}
 			else{
-				int sum = dividend / divisor;
+				int quotient = dividend / divisor;
 				
 				System.out.println("");
-				System.out.println("  " + dividend + " / " +  divisor  + " = " + sum);
+				System.out.println("  " + dividend + " / " +  divisor  + " = " + quotient);
 				}
-			}
-		else {
+			break;
+		default:
 			System.out.println("I'm sorry, I don't undnerstand what '" + operation +"' is.");
 		}
-		
-		
 	}
 
 }
