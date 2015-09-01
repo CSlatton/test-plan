@@ -3,7 +3,7 @@ package com.xpanxion;
 import java.util.Scanner;
 
 public class PersonalizedCalculator {
-	
+	public static final int QUIT = 0;
 	public static final int ADDITION = 1;
 	public static final int SUBTRACTION = 2;
 	public static final int MULTIPLICATION = 3;	
@@ -18,22 +18,12 @@ public class PersonalizedCalculator {
 		System.out.println("");
 		System.out.println("Results: ");
 	}
-	public static void main(String[] args) {
-		System.out.print("What is your name? ");
-		
-		Scanner keyboard = new Scanner(System.in);
-		String name = keyboard.next();
-		
-		System.out.println("Hi, " + name);
-		System.out.println("I can perform the following operations: ");
-		System.out.println(" 1) Addition");
-		System.out.println(" 2) Subtraction");
-		System.out.println(" 3) Multiplication");
-		System.out.println(" 4) Division");
-		System.out.println("What would you like to do?");
-		int operation = keyboard.nextInt();
-		
+	
+	private static void performAction(int operation, String name, Scanner keyboard){
 		switch(operation) {
+		case QUIT:
+			System.out.println("Goodbye, " + name);
+			break;
 		case ADDITION:
 			promptForNumbers();
 			int addend = keyboard.nextInt();
@@ -81,6 +71,30 @@ public class PersonalizedCalculator {
 			break;
 		default:
 			System.out.println("I'm sorry, I don't undnerstand what '" + operation +"' is.");
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		System.out.print("What is your name? ");
+		
+		Scanner keyboard = new Scanner(System.in);
+		String name = keyboard.next();
+		
+		System.out.println("Hi, " + name);
+		System.out.println("I can perform the following operations: ");
+		System.out.println(" 0) Quit");
+		System.out.println(" 1) Addition");
+		System.out.println(" 2) Subtraction");
+		System.out.println(" 3) Multiplication");
+		System.out.println(" 4) Division");
+		int operation = -1;
+		
+		while(operation != QUIT) {
+		System.out.println("What would you like to do?");
+		operation = keyboard.nextInt();
+		performAction(operation,name,keyboard);
+		
 		}
 	}
 
