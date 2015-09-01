@@ -8,6 +8,7 @@ public class PersonalizedCalculator {
 	public static final int SUBTRACTION = 2;
 	public static final int MULTIPLICATION = 3;	
 	public static final int DIVISION = 4;
+	public static final int FACTORIAL = 5;
 	
 	private static void promptForNumbers() {
 		System.out.println("");
@@ -69,6 +70,17 @@ public class PersonalizedCalculator {
 				System.out.println("  " + dividend + " / " +  divisor  + " = " + quotient);
 				}
 			break;
+		case FACTORIAL:
+			promptForNumbers();
+			int value = keyboard.nextInt();
+			int total = 1;
+			
+			for(int i = value; i > 0; i--) {
+				total *= i;
+			}
+			displayResultHeader();
+			System.out.println(" " + value + "! = " + total);
+			break;
 		default:
 			System.out.println("I'm sorry, I don't undnerstand what '" + operation +"' is.");
 		}
@@ -88,6 +100,7 @@ public class PersonalizedCalculator {
 		System.out.println(" 2) Subtraction");
 		System.out.println(" 3) Multiplication");
 		System.out.println(" 4) Division");
+		System.out.println(" 5) Factoral");
 		int operation = -1;
 		
 		while(operation != QUIT) {
