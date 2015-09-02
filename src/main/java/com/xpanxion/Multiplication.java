@@ -1,17 +1,17 @@
 package com.xpanxion;
 
-import java.util.Scanner;
+public class Multiplication extends BinaryOperation {
+	public Multiplication(){
+		super("*");
+	}
 
-public class Multiplication {
-
-	public Calculation performOperation(Scanner keyboard){
-
-		int multiplier = keyboard.nextInt();
-		int multiplicand = keyboard.nextInt();
+	protected int calculate(int multiplier, int multiplicand) {
 		
-		int product = multiplier * multiplicand;
-		Calculation result = new Calculation();
-		result.setTextResult("  " + multiplier + " * " +  multiplicand  + " = " + product);
-		return result;
+		return multiplier * multiplicand;
+	}
+
+
+	protected boolean isValid(int multiplier, int multiplicand) {
+		return true;
 	}
 }

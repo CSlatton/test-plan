@@ -34,19 +34,8 @@ public class Calculator {
 			result = multiplication.performOperation(keyboard);
 			break;
 		case DIVISION:
-			
-			int dividend = keyboard.nextInt();
-			int divisor = keyboard.nextInt();
-			
-			if(divisor == 0 ) {
-				result.setTextResult("I'm sorry, but you cannot divide by zero.");
-			}
-			else{
-				int quotient = dividend / divisor;
-				
-				System.out.println("");
-				result.setTextResult("  " + dividend + " / " +  divisor  + " = " + quotient);
-				}
+			Division division = new Division();
+			result = division.performOperation(keyboard);
 			break;
 		case FACTORIAL:
 			Factorial factorial = new Factorial();

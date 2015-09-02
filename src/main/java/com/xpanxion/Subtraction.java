@@ -14,5 +14,15 @@ public class Subtraction extends BinaryOperation {
 		int difference = minuend - subtrahend;
 		return successfulCalculation(minuend,subtrahend,difference);
 	}
+
+	protected int calculate(int minuend, int subtrahend) {
+		return minuend - subtrahend;
+	}
+
+	
+	protected boolean isValid(int minuend, int subtrahend) {
+		
+		return true;
+	}
 	
 }
