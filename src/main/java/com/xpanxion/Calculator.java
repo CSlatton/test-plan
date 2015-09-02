@@ -22,34 +22,16 @@ public class Calculator {
 			result.setTextResult("Goodbye, " + name);
 			break;
 		case ADDITION:
-			
-			int addend = keyboard.nextInt();
-			int augend = keyboard.nextInt();
-			
-			int sum = addend + augend;
-			
-		//	displayResultHeader();
-			result.setTextResult("  " + addend + " + " +  augend  + " = " + sum);
+			Addition addition = new Addition();
+			result = addition.performOperation(keyboard);
 			break;
 		case SUBTRACTION:
-			
-			int minuend = keyboard.nextInt();
-			int subtrahend = keyboard.nextInt();
-			
-			int difference = minuend - subtrahend;
-			
-		//	displayResultHeader();
-			result.setTextResult("  " + minuend + " - " +  subtrahend  + " = " + difference);
+			Subtraction subtraction = new Subtraction();
+			result = subtraction.performOperation(keyboard);
 			break;
 		case MULTIPLICATION:
-			
-			int multiplier = keyboard.nextInt();
-			int multiplicand = keyboard.nextInt();
-			
-			int product = multiplier * multiplicand;
-			
-		//	displayResultHeader();
-			result.setTextResult("  " + multiplier + " * " +  multiplicand  + " = " + product);
+			Multiplication multiplication = new Multiplication();
+			result = multiplication.performOperation(keyboard);
 			break;
 		case DIVISION:
 			
@@ -67,15 +49,8 @@ public class Calculator {
 				}
 			break;
 		case FACTORIAL:
-		
-			int value = keyboard.nextInt();
-			int total = 1;
-			
-			for(int i = value; i > 0; i--) {
-				total *= i;
-			}
-		//	displayResultHeader();
-			System.out.println(" " + value + "! = " + total);
+			Factorial factorial = new Factorial();
+			factorial.performOperation(keyboard);
 			break;
 		default:
 			result.setTextResult("I'm sorry, I don't undnerstand what '" + operation +"' is.");
