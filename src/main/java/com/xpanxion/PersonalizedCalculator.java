@@ -20,58 +20,59 @@ public class PersonalizedCalculator {
 		System.out.println("Results: ");
 	}
 	
-	private static void performAction(int operation, String name, Scanner keyboard){
+	private static Calculation performAction(int operation, String name, Scanner keyboard){
+		Calculation result = new Calculation();
 		switch(operation) {
 		case QUIT:
-			System.out.println("Goodbye, " + name);
+			result.setTextResult("Goodbye, " + name);
 			break;
 		case ADDITION:
-			promptForNumbers();
+			
 			int addend = keyboard.nextInt();
 			int augend = keyboard.nextInt();
 			
 			int sum = addend + augend;
 			
 			displayResultHeader();
-			System.out.println("  " + addend + " + " +  augend  + " = " + sum);
+			result.setTextResult("  " + addend + " + " +  augend  + " = " + sum);
 			break;
 		case SUBTRACTION:
-			promptForNumbers();
+			
 			int minuend = keyboard.nextInt();
 			int subtrahend = keyboard.nextInt();
 			
 			int difference = minuend - subtrahend;
 			
 			displayResultHeader();
-			System.out.println("  " + minuend + " - " +  subtrahend  + " = " + difference);
+			result.setTextResult("  " + minuend + " - " +  subtrahend  + " = " + difference);
 			break;
 		case MULTIPLICATION:
-			promptForNumbers();
+			
 			int multiplier = keyboard.nextInt();
 			int multiplicand = keyboard.nextInt();
 			
 			int product = multiplier * multiplicand;
 			
 			displayResultHeader();
-			System.out.println("  " + multiplier + " * " +  multiplicand  + " = " + product);
+			result.setTextResult("  " + multiplier + " * " +  multiplicand  + " = " + product);
 			break;
 		case DIVISION:
-			promptForNumbers();
+			
 			int dividend = keyboard.nextInt();
 			int divisor = keyboard.nextInt();
 			
 			if(divisor == 0 ) {
-				System.out.println("I'm sorry, but you cannot divide by zero.");
+				result.setTextResult("I'm sorry, but you cannot divide by zero.");
 			}
 			else{
 				int quotient = dividend / divisor;
 				
 				System.out.println("");
-				System.out.println("  " + dividend + " / " +  divisor  + " = " + quotient);
+				result.setTextResult("  " + dividend + " / " +  divisor  + " = " + quotient);
 				}
 			break;
 		case FACTORIAL:
-			promptForNumbers();
+		
 			int value = keyboard.nextInt();
 			int total = 1;
 			
@@ -82,9 +83,9 @@ public class PersonalizedCalculator {
 			System.out.println(" " + value + "! = " + total);
 			break;
 		default:
-			System.out.println("I'm sorry, I don't undnerstand what '" + operation +"' is.");
+			result.setTextResult("I'm sorry, I don't undnerstand what '" + operation +"' is.");
 		}
-		
+		return result;
 	}
 	
 	public static void main(String[] args) {
@@ -105,8 +106,13 @@ public class PersonalizedCalculator {
 		
 		while(operation != QUIT) {
 		System.out.println("What would you like to do?");
-		operation = keyboard.nextInt();
-		performAction(operation,name,keyboard);
+		operation = keyboard.nextInt();		
+		if(operation >= ADDITION && operation <= FACTORIAL){
+			promptForNumbers();
+		}
+		Calculation answer = performAction(operation,name,keyboard);
+		
+		System.out.println(answer.getTextResult());
 		
 		}
 	}
