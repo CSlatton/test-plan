@@ -1,0 +1,6 @@
+input, select {
+	background-color: LightGrey;
+	border:1px solid;
+	height: 25px;
+	padding: 5px;
+}
