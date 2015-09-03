@@ -46,7 +46,19 @@ public class Calculator {
 			result.setTextResult("I'm sorry, I don't undnerstand what '" + operation +"' is.");
 		}
 		if(op != null){
+			try {
 			result = op.performOperation(keyboard);
+			}
+			catch(java.util.InputMismatchException inputMismatchException) {
+				result = new Calculation();
+				result.setTextResult("Invalid values specified");
+			}
+			catch(java.util.NoSuchElementException noSuchElementException) {
+				result = new Calculation();
+				result.setTextResult("No values specifed");
+			}
+			
+			
 		}
 		return result;
 	}

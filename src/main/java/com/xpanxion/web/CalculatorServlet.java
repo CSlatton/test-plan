@@ -30,7 +30,8 @@ public class CalculatorServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		String guestName = (String)	session.getAttribute("guests");
 		Calculator calculator = new Calculator();
-		Calculation results = calculator.performAction(Calculator.ADDITION, guestName, scanner);
+		int operation = Integer.parseInt(req.getParameter("operation"));
+		Calculation results = calculator.performAction(operation, guestName, scanner);
 		req.setAttribute("resultText", results.getTextResult());
 		req.getRequestDispatcher("calculator.jsp").forward(req, resp);
 		
